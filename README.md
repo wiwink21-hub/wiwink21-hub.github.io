@@ -1,73 +1,127 @@
-# Welcome to your Lovable project
+# TECHCO - Electronics Company Website
 
-## Project info
+Website e-commerce untuk perusahaan elektronik dengan berbagai kategori produk dan layanan pelanggan.
 
-**URL**: https://lovable.dev/projects/ef83c5a3-4d20-48ac-8f40-4b847685f84d
+## Fitur
 
-## How can I edit this code?
+- **Navigasi Lengkap**
+  - Home
+  - About
+  - Contact
+  - Products (dengan dropdown)
+    - All Products
+    - TVs & Audio
+    - Home Appliances
+    - Computing
+  - Support (dengan dropdown)
+    - Support Center
+    - Customer Service
+    - Product Registration
+    - Warranty Info
 
-There are several ways of editing your application.
+- **Halaman Produk**
+  - TVs & Audio - Televisi dan sistem audio premium
+  - Home Appliances - Peralatan rumah tangga pintar
+  - Computing - Monitor dan solusi komputasi
 
-**Use Lovable**
+- **Halaman Layanan**
+  - Customer Service - Dukungan pelanggan 24/7
+  - Product Registration - Pendaftaran produk untuk aktivasi garansi
+  - Warranty Info - Informasi garansi lengkap
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ef83c5a3-4d20-48ac-8f40-4b847685f84d) and start prompting.
+## Teknologi
 
-Changes made via Lovable will be committed automatically to this repo.
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui
+- React Router
 
-**Use your preferred IDE**
+## Development
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```bash
+# Install dependencies
+npm install
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Run development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Server akan berjalan di `http://localhost:5000`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Build
 
-**Use GitHub Codespaces**
+```bash
+# Build for production
+npm run build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Preview production build
+npm run preview
+```
 
-## What technologies are used for this project?
+## Deploy ke GitHub Pages
 
-This project is built with:
+### Langkah 1: Setup Repository
+1. Push kode ini ke repository GitHub Anda
+2. Pastikan branch utama adalah `main` atau `master`
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Langkah 2: Aktifkan GitHub Pages
+1. Buka repository di GitHub
+2. Masuk ke **Settings** → **Pages**
+3. Di bagian **Source**, pilih **GitHub Actions**
+4. Klik **Save**
 
-## How can I deploy this project?
+### Langkah 3: Deploy Otomatis
+Workflow GitHub Actions sudah dikonfigurasi di `.github/workflows/deploy.yml`
 
-Simply open [Lovable](https://lovable.dev/projects/ef83c5a3-4d20-48ac-8f40-4b847685f84d) and click on Share -> Publish.
+Setiap kali Anda push ke branch `main` atau `master`, website akan otomatis di-build dan di-deploy ke GitHub Pages.
 
-## Can I connect a custom domain to my Lovable project?
+### Konfigurasi Vite untuk GitHub Pages
 
-Yes, you can!
+Konfigurasi di `vite.config.ts` sudah diatur untuk GitHub Pages:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```typescript
+export default defineConfig({
+  base: '/',  // Untuk user/org pages (username.github.io)
+  // ...
+})
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**Catatan:**
+- Jika repository Anda adalah `username.github.io`, gunakan `base: '/'`
+- Jika repository Anda adalah project page (contoh: `my-project`), ubah menjadi `base: '/my-project/'`
+
+### URL Deployment
+Setelah deploy berhasil, website Anda akan tersedia di:
+- User/Org pages: `https://username.github.io`
+- Project pages: `https://username.github.io/repository-name`
+
+## Struktur Folder
+
+```
+src/
+├── assets/          # Gambar produk
+├── components/      # Komponen React
+│   ├── ui/         # Komponen shadcn/ui
+│   ├── Navigation.tsx
+│   └── Footer.tsx
+├── pages/          # Halaman aplikasi
+│   ├── Index.tsx
+│   ├── Products.tsx
+│   ├── TvsAudio.tsx
+│   ├── HomeAppliances.tsx
+│   ├── Computing.tsx
+│   ├── Support.tsx
+│   ├── CustomerService.tsx
+│   ├── ProductRegistration.tsx
+│   ├── Warranty.tsx
+│   ├── About.tsx
+│   └── Contact.tsx
+├── lib/            # Utilitas
+└── App.tsx         # Root component dengan routing
+```
+
+## License
+
+MIT
